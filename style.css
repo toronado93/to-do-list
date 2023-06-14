@@ -1,0 +1,386 @@
+:root {
+  --clr-primary-100: hsl(225, 100%, 94%);
+  /* For Calendar */
+  --calendar-bg-color: #262829;
+  --calendar-font-color: #fff;
+  --weekdays-border-bottom-color: #404040;
+  --calendar-date-hover-color: #505050;
+  --calendar-current-date-color: #1b1f21;
+  --calendar-today-color: linear-gradient(to bottom, #03a9f4, #2196f3);
+  --calendar-today-innerborder-color: transparent;
+  --calendar-nextprev-bg-color: transparent;
+  --next-prev-arrow-color: #fff;
+  --calendar-border-radius: 16px;
+  --calendar-prevnext-date-color: #484848;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Red Hat Display", sans-serif;
+  box-sizing: border-box;
+  height: 100vh;
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/images/pattern-background-desktop.svg);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-color: var(--clr-primary-100);
+}
+
+button[type="hidden"] {
+  visibility: hidden;
+}
+
+/* Utility Class */
+
+.text-align-centre {
+  text-align: center;
+}
+
+.padding_block {
+  padding-block: 20px;
+}
+
+/* Weather */
+
+.weather {
+  width: 350px;
+  height: 200px;
+  background-color: var(--calendar-bg-color);
+  color: var(--calendar-font-color);
+  border-radius: 1.5rem;
+}
+
+/* CALENDAR */
+.calendar {
+  font-family: "IBM Plex Sans", sans-serif;
+  position: relative;
+  max-width: 600px; /*change as per your design need */
+  min-width: 320px;
+  background: var(--calendar-bg-color);
+  color: var(--calendar-font-color);
+  margin: 20px auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-weight: normal;
+  border-radius: var(--calendar-border-radius);
+}
+
+.calendar-inner {
+  height: 250px;
+  width: 600px;
+  padding: 10px 10px;
+}
+
+.calendar-controls {
+  margin-top: 1.5rem;
+}
+.calendar .calendar-inner .calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.calendar .calendar-inner .calendar-body div:nth-child(-n + 7):hover {
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--weekdays-border-bottom-color);
+}
+
+.calendar .calendar-inner .calendar-body div > a {
+  color: var(--calendar-font-color);
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+
+.calendar .calendar-inner .calendar-body div:hover {
+  border: 1px solid var(--calendar-date-hover-color);
+  border-radius: 4px;
+}
+
+.calendar .calendar-inner .calendar-body div.empty-dates:hover {
+  border: 1px solid transparent;
+}
+
+.calendar .calendar-inner .calendar-controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.calendar .calendar-inner .calendar-today-date {
+  display: grid;
+  text-align: center;
+  cursor: pointer;
+  margin: 3px 0px;
+  background: var(--calendar-current-date-color);
+  padding: 8px 0px;
+  border-radius: 10px;
+  width: 80%;
+  margin: auto;
+}
+
+.calendar .calendar-inner .calendar-controls .calendar-year-month {
+  display: flex;
+  min-width: 100px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.calendar .calendar-inner .calendar-controls .calendar-next {
+  text-align: right;
+}
+
+.calendar
+  .calendar-inner
+  .calendar-controls
+  .calendar-year-month
+  .calendar-year-label,
+.calendar
+  .calendar-inner
+  .calendar-controls
+  .calendar-year-month
+  .calendar-month-label {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.calendar .calendar-inner .calendar-body .calendar-today {
+  background: var(--calendar-today-color);
+  border-radius: 4px;
+}
+
+.calendar .calendar-inner .calendar-body .calendar-today:hover {
+  border: 1px solid transparent;
+}
+
+.calendar .calendar-inner .calendar-body .calendar-today a {
+  outline: 2px solid var(--calendar-today-innerborder-color);
+}
+
+.calendar .calendar-inner .calendar-controls .calendar-next a,
+.calendar .calendar-inner .calendar-controls .calendar-prev a {
+  color: var(--calendar-font-color);
+  font-family: arial, consolas, sans-serif;
+  font-size: 26px;
+  text-decoration: none;
+  padding: 4px 12px;
+  display: inline-block;
+  background: var(--calendar-nextprev-bg-color);
+  margin: 10px 0 10px 0;
+}
+
+.calendar .calendar-inner .calendar-controls .calendar-next a svg,
+.calendar .calendar-inner .calendar-controls .calendar-prev a svg {
+  height: 20px;
+  width: 20px;
+}
+
+.calendar .calendar-inner .calendar-controls .calendar-next a svg path,
+.calendar .calendar-inner .calendar-controls .calendar-prev a svg path {
+  fill: var(--next-prev-arrow-color);
+}
+
+.calendar .calendar-inner .calendar-body .prev-dates,
+.calendar .calendar-inner .calendar-body .next-dates {
+  color: var(--calendar-prevnext-date-color);
+}
+
+.calendar .calendar-inner .calendar-body .prev-dates:hover,
+.calendar .calendar-inner .calendar-body .next-dates:hover {
+  border: 1px solid transparent;
+  pointer-events: none;
+}
+
+/* List  */
+
+.list_wrapper {
+  flex-shrink: 1;
+  width: 700px;
+
+  background-color: var(--calendar-bg-color);
+  color: var(--calendar-font-color);
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.list-title {
+  margin-top: 5px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.edit_button_line {
+  display: flex;
+  justify-content: end;
+}
+
+.edit_button_line > button {
+  cursor: pointer;
+  margin: 10px 15px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #fff;
+  border-radius: 20px;
+  color: var(--calendar-bg-color);
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.edit_button_line > button:hover {
+  background-color: grey;
+
+  color: #fff;
+}
+
+.list_line {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.taskList {
+  list-style-type: none;
+  margin-inline: auto;
+}
+
+.taskList > li {
+  margin-bottom: 6px;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.taskList input[type="checkbox"] {
+  display: none;
+}
+
+/* List-Checkbox */
+
+input[type="checkbox"] {
+  transform: scale(2); /* Increase the size of the checkbox */
+  margin-right: 10px; /* Add some spacing between the checkbox and label */
+}
+
+.li_sub_wrapper {
+  display: flex;
+  gap: 2rem;
+}
+
+/* DOT */
+.dot-container {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.dot::before,
+.dot::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  border-radius: 50%;
+  top: 3px;
+}
+
+.dot::before {
+  left: 0;
+}
+
+.dot::after {
+  right: 0;
+}
+
+/* Interaction Line */
+.interaction_line {
+  margin-inline: 20px;
+  padding-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  justify-content: space-between;
+}
+.button_delete {
+  cursor: pointer;
+  margin: 10px 15px;
+  padding: 10px 20px;
+  border: none;
+  background-color: rgb(221, 67, 67);
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  display: none;
+
+  /* grid-area: 1/1/1/1; */
+}
+
+.idinput {
+  grid-area: 1/2/1/3;
+}
+
+.button_delete:hover {
+  background-color: rgb(227, 124, 124);
+}
+
+.button_add {
+  cursor: pointer;
+  margin: 10px 15px;
+  padding: 10px 20px;
+
+  width: 5rem;
+  aspect-ratio: 1/1;
+  border: none;
+  background-color: rgb(130, 195, 32);
+  border-radius: 50%;
+
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  /* SS */
+  display: none;
+
+  grid-area: 1/3/1/-1;
+  justify-self: end;
+}
+.button_add:hover {
+  background-color: rgb(173, 241, 70);
+}
+
+#taskInput {
+  margin-bottom: 10px;
+  align-self: end;
+  height: 50px;
+  width: 250px;
+  border-radius: 12px;
+  outline: 2px rgb(125, 7, 7) solid;
+  justify-content: end;
+}
+
+.button_exit {
+  font-weight: 500;
+  color: #1b1f21;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-top-right-radius: 15px;
+  background-color: white;
+}

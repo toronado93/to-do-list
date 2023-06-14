@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      body {
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="weather | text-align-centre">The Weather info</div>
+    <div class="calendar"></div>
+
+    <!-- Form for sending data -->
+    <form action="/" method="POST">
+      <input type="hidden" name="date" value="14" />
+      <input type="hidden" name="month" value="June" />
+      <input type="hidden" name="year" value="2023" />
+      <button type="hidden" id="submitbutton" type="submit">
+        View To-Do List for Monday, 10:00 AM
+      </button>
+    </form>
+
+    <script src="/calendar.js"></script>
+  </body>
+</html>
