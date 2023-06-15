@@ -89,7 +89,8 @@ class ListControl {
   deleteTasks = () => {
     this.checkboxes.forEach((checkbox) => {
       if (checkbox.checked) {
-        checkbox.closest("li").remove();
+        // checkbox.closest("li").remove();
+        checkbox.parentNode.parentNode.remove();
       }
     });
 

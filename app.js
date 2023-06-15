@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const path = require("path");
+const { atlasConnect, atlasAsk } = require(__dirname + "/db.js");
+
+// Mongo DB Connection
+atlasConnect();
 
 // Middware
 app.use(express.urlencoded({ extended: true }));
@@ -18,12 +22,25 @@ app.get("/", (req, res) => {
 
 // Post Method
 
-app.post("/", (req, res) => {
+app.post("/", async (req, res) => {
   const { date, month, year } = req.body;
 
   const the_day = `${date} ${month} ${year}`;
 
-  res.render("list", { the_day });
+  //   We can use ask data here
+
+  try {
+    const atlasrespond = await atlasAsk(the_day);
+
+    if (atlasrespond) {
+      res.render("list", { the_day, atlasrespond });
+    } else {
+      res.render("list", { the_day, atlasrespond: [] });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 app.listen(port, () => {

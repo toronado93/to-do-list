@@ -33,13 +33,14 @@
         </div>
         <div class="list_line | padding_block">
           <ul class="taskList">
+            <% atlasrespond.forEach((element, index) => { %>
             <li>
-              <!-- <div class="li_sub_wrapper">
-                <input type="checkbox" id="item1" />
-                <label for="item1">Wake-Up</label>
+              <div class="li_sub_wrapper">
+                <input type="checkbox" id="item<%= index + 1 %>" />
+                <label for="item<%= index + 1 %>"><%= element %></label>
               </div>
-            </li>-->
             </li>
+            <% }); %>
           </ul>
         </div>
 
