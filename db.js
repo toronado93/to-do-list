@@ -1,8 +1,8 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 
 // Problem Occured early due absent of db name
-const connectionURL =
-  "mongodb+srv://eep93:uBXwc46VggsVQmYu@cluster0.9rr3zwi.mongodb.net/todo-list?retryWrites=true&w=majority";
+const connectionURL = process.env.MONGODB_URL;
 
 const options = {
   useNewUrlParser: true,
@@ -11,6 +11,7 @@ const options = {
 
 const connectDB = async () => {
   try {
+    console.log(process.env.MONGODB_URL);
     await mongoose.connect(connectionURL, options);
     console.log("MongoDB Atlas is connected...");
   } catch (error) {
