@@ -114,10 +114,26 @@ class ListControl {
       const liWrapper = document.createElement("div");
       const checkbox = document.createElement("input");
       const label = document.createElement("label");
+      // Add Hidden value
+      const hidden_input = document.createElement("input");
 
+      // Fill Checkbox for sending data purpose into app.js
+      // checkbox.name = `new${taskList.childElementCount + 1}`;
+      // checkbox.value = newTask;
+      hidden_input.name = `new${taskList.childElementCount + 1}`;
+      hidden_input.value = newTask;
+      hidden_input.type = "text";
+      hidden_input.style.display = "none";
+      liWrapper.appendChild(hidden_input);
+      //
       checkbox.type = "checkbox";
       checkbox.id = `item${taskList.childElementCount + 1}`;
       checkbox.style.display = "none";
+      // add data-is-active new
+      // checkbox.setAttribute("data-is-active", "true");
+
+      // Add Hidden value and
+
       label.setAttribute("for", `item${taskList.childElementCount + 1}`);
       label.textContent = newTask;
 
