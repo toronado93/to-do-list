@@ -38,7 +38,11 @@
               <li>
                 <div class="li_sub_wrapper">
                   <!-- <input type="text" name="name" value="text" id="name" /> -->
-                  <input type="checkbox" id="item<%= index + 1 %>" />
+                  <input
+                    type="checkbox"
+                    id="item<%= index + 1 %>"
+                    name="<%= element %>"
+                  />
                   <label for="item<%= index + 1 %>"><%= element %></label>
                 </div>
               </li>

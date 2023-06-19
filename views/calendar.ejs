@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      body {
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="weather | text-align-centre">
+      <h3>The Weather info</h3>
+      <hr />
+      <p class="weather_city"><%= city_name%></p>
+      <div class="weather_info_wrapper">
+        <img src="<%=icon_url%>" alt="" srcset="" />
+        <p class="temp_info"><%=temperature%>°C</p>
+      </div>
+    </div>
+
+    <div class="calendar"></div>
+
+    <!-- Form for sending data -->
+    <form action="/" method="POST">
+      <input type="hidden" name="date" value="14" />
+      <input type="hidden" name="month" value="June" />
+      <input type="hidden" name="year" value="2023" />
+      <button type="hidden" id="submitbutton" type="submit">
+        View To-Do List for Monday, 10:00 AM
+      </button>
+    </form>
+
+    <!-- <button id="openPopupButton">Open Pop-up</button> -->
+    <div style="text-align: center" id="popup">
+      <p><%= data_info%> data is <%= data_circumstance %></p>
+      <p style="display: none" id="deletedData"><%= data_info%></p>
+    </div>
+
+    <script src="/calendar.js"></script>
+  </body>
+</html>

@@ -158,6 +158,39 @@ function CalendarControl() {
       calendarControl.plotPrevMonthDates(prevMonthDatesArray);
       calendarControl.plotNextMonthDates();
     },
+    // Modified
+    eventloader: () => {
+      // Deleted data information should come here , hence we updated div style to be seen
+      // Then dissappeared in two second
+      const popdiv = document.getElementById("popup");
+      const p = document.getElementById("deletedData");
+      const outerText = p.outerText;
+      console.log(outerText);
+      document.addEventListener("DOMContentLoaded", () => {
+        if (outerText == 1) {
+          popdiv.style.display = "block";
+        }
+
+        setTimeout(() => {
+          popdiv.style.display = "none";
+        }, 2000);
+
+        // Get Geolocation info from user
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const latitude = position.coords.latitude;
+              const longitude = position.coords.longitude;
+            },
+            (err) => {
+              console.log(err);
+            }
+          );
+        } else {
+          console.log("Geolocation is not supported by this browser.");
+        }
+      });
+    },
     attachEvents: function () {
       let prevBtn = document.querySelector(".calendar .calendar-prev a");
       let nextBtn = document.querySelector(".calendar .calendar-next a");
@@ -239,6 +272,7 @@ function CalendarControl() {
       calendarControl.attachEvents();
     },
     init: function () {
+      calendarControl.eventloader();
       calendarControl.plotSelectors();
       calendarControl.plotDates();
       calendarControl.attachEvents();

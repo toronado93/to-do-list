@@ -88,8 +88,23 @@ class ListControl {
 
   deleteTasks = () => {
     this.checkboxes.forEach((checkbox) => {
+      const taskList = document.querySelector(".taskList");
+      const liWrapper = document.createElement("div");
+
       if (checkbox.checked) {
-        // checkbox.closest("li").remove();
+        // Find what info contains closest label
+
+        // Create input and fill their value with the label value.
+        const delete_input = document.createElement("input");
+        delete_input.type = "text";
+        delete_input.name = `delete${taskList.childElementCount + 1}`;
+        delete_input.value = checkbox.name;
+
+        delete_input.style.display = "none";
+
+        liWrapper.appendChild(delete_input);
+        taskList.appendChild(liWrapper);
+
         checkbox.parentNode.parentNode.remove();
       }
     });
