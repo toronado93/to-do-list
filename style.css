@@ -242,6 +242,7 @@ button[type="hidden"] {
 .list_line {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 1fr; */
 }
 
 .taskList {
@@ -383,4 +384,50 @@ input[type="checkbox"] {
   border: none;
   border-top-right-radius: 15px;
   background-color: white;
+}
+
+/* Pop-up */
+
+/* .hidden_popup {
+  display: none;
+} */
+
+#popup {
+  display: none;
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#popup h2 {
+  margin-top: 0;
+}
+
+#openPopupButton {
+  margin-top: 20px;
+}
+
+/* Weather Api */
+
+.weather_city {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.weather_info_wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.temp_info {
+  font-size: 28px;
+  font-weight: 700;
+  align-self: center;
 }

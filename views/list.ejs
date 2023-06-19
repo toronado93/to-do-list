@@ -31,17 +31,25 @@
           <div class="dot"></div>
           <div class="dot"></div>
         </div>
-        <div class="list_line | padding_block">
-          <ul class="taskList">
-            <li>
-              <!-- <div class="li_sub_wrapper">
-                <input type="checkbox" id="item1" />
-                <label for="item1">Wake-Up</label>
-              </div>
-            </li>-->
-            </li>
-          </ul>
-        </div>
+        <form id="atlas_update_Form" action="/list" method="POST">
+          <div class="list_line | padding_block">
+            <ul class="taskList">
+              <% atlasrespond.forEach((element, index) => { %>
+              <li>
+                <div class="li_sub_wrapper">
+                  <!-- <input type="text" name="name" value="text" id="name" /> -->
+                  <input
+                    type="checkbox"
+                    id="item<%= index + 1 %>"
+                    name="<%= element %>"
+                  />
+                  <label for="item<%= index + 1 %>"><%= element %></label>
+                </div>
+              </li>
+              <% }); %>
+            </ul>
+          </div>
+        </form>
 
         <div class="interaction_line">
           <button class="button_delete" style="display: none">Delete</button>
@@ -56,7 +64,10 @@
       </div>
       <div>
         <!-- <button class="button_exit">← Back to Calendar</button> -->
-        <a href="/" class="button_exit">← Back to Calendar </a>
+        <!-- <a type="submit" form="atlas_update_Form"   class="button_exit">← Back to Calendar </a> -->
+        <button type="submit" class="button_exit" form="atlas_update_Form">
+          ← Back to Calendar
+        </button>
       </div>
     </div>
 

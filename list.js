@@ -88,8 +88,24 @@ class ListControl {
 
   deleteTasks = () => {
     this.checkboxes.forEach((checkbox) => {
+      const taskList = document.querySelector(".taskList");
+      const liWrapper = document.createElement("div");
+
       if (checkbox.checked) {
-        checkbox.closest("li").remove();
+        // Find what info contains closest label
+
+        // Create input and fill their value with the label value.
+        const delete_input = document.createElement("input");
+        delete_input.type = "text";
+        delete_input.name = `delete${taskList.childElementCount + 1}`;
+        delete_input.value = checkbox.name;
+
+        delete_input.style.display = "none";
+
+        liWrapper.appendChild(delete_input);
+        taskList.appendChild(liWrapper);
+
+        checkbox.parentNode.parentNode.remove();
       }
     });
 
@@ -113,10 +129,26 @@ class ListControl {
       const liWrapper = document.createElement("div");
       const checkbox = document.createElement("input");
       const label = document.createElement("label");
+      // Add Hidden value
+      const hidden_input = document.createElement("input");
 
+      // Fill Checkbox for sending data purpose into app.js
+      // checkbox.name = `new${taskList.childElementCount + 1}`;
+      // checkbox.value = newTask;
+      hidden_input.name = `new${taskList.childElementCount + 1}`;
+      hidden_input.value = newTask;
+      hidden_input.type = "text";
+      hidden_input.style.display = "none";
+      liWrapper.appendChild(hidden_input);
+      //
       checkbox.type = "checkbox";
       checkbox.id = `item${taskList.childElementCount + 1}`;
       checkbox.style.display = "none";
+      // add data-is-active new
+      // checkbox.setAttribute("data-is-active", "true");
+
+      // Add Hidden value and
+
       label.setAttribute("for", `item${taskList.childElementCount + 1}`);
       label.textContent = newTask;
 
